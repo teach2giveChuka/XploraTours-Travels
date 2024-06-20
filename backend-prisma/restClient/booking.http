@@ -1,0 +1,44 @@
+###createBooking
+POST http://localhost:4115/booking/create-booking
+Content-Type: application/json
+
+{
+    "tourId": "b1602cf2-1fc8-4c80-beac-437df94f0759",
+    "userId": "79485cb2-259b-4e81-8933-5c31732c6e32",
+    "numberOfPeople": 2
+}
+
+###getBooking for one user(pass user id in the url as id)
+GET http://localhost:4115/booking/view-user-booking/1fd73e47-380b-4d5e-a3c7-4d84a422f30c
+
+###cancel booking(deletig a booking pass booking id in the url as id)
+DELETE  http://localhost:4115/booking/delete-booking/1fd73e47-380b-4d5e-a3c7-4d84a422f30c
+
+###view all bookings
+GET http://localhost:4115/booking/view-all-bookings
+
+###update bookings (note to self: remember to pass the booking id in the in the url as id)
+PUT http://localhost:4115/booking/update-booking/696cfeaa-88b9-41bf-957f-0a44162e6f3d
+Content-Type: application/json
+
+{
+    "userId": "1fd73e47-380b-4d5e-a3c7-4d84a422f30c",
+    "tourId": "cf688843-0809-41ff-8742-4214420777cf",
+    "numberOfPeople": 3
+}
+
+###view tour booking(Note to future ffrontending (pass tour id in the url as id)
+GET http://localhost:4115/booking/view-tour-booking/cf688843-0809-41ff-8742-4214420777cf
+
+###view count of bookings for a tour
+GET http://localhost:4115/booking/bookingsCount
+
+###getting total amount to be earned per tour(Note to future :Pass tour ID in the url as id)
+GET http://localhost:4115/booking/totalAmmountPerTour/cf688843-0809-41ff-8742-4214420777cf
+
+###getting total amount  ever Spent by user(Note to future :Pass user ID in the url as id)
+GET http://localhost:4115/booking/totalSpentByUser/1fd73e47-380b-4d5e-a3c7-4d84a422f30c
+
+
+###total ammount earned by company
+GET http://localhost:4115/booking/totalAmountCollectively

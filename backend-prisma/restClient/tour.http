@@ -1,0 +1,66 @@
+### new tour
+POST http://localhost:4115/tour/create-tour 
+Content-Type: application/json
+
+{
+    "destination": "Kenya",
+    "duration": 5,
+    "price": 1500,
+    "tourType": "Sightseeing",
+    "createdAt": "2024-06-20T09:17:50.238Z",
+    "startDate": "2024-07-01T00:00:00.000Z",
+    "endDate": "2024-07-06T00:00:00.000Z",
+    "description": "A breathtaking 5-day sightseeing tour of Paris, covering all major attractions and landmarks."
+}
+
+
+###view all tours
+GET http://localhost:4115/tour/view-all-tours
+
+
+###delete tour
+DELETE http://localhost:4115/tour/delete-tour/3f4bddd7-516c-4315-9f26-3598d5636549
+
+
+###update tour
+PUT http://localhost:4115/tour/update-tour/cf688843-0809-41ff-8742-4214420777cf
+Content-Type: application/json
+    
+    {
+        "destination": "Paris",
+        "price": 1500,
+        "tourType": "Sightseeing",
+        "createdAt": "2024-06-20T09:17:50.238Z",
+        "startDate": "2024-07-01T00:00:00.000Z",
+        "endDate": "2024-07-06T00:00:00.000Z"
+    }
+
+###get one tour
+GET http://localhost:4115/tour/view-tour/cf688843-0809-41ff-8742-4214420777cf
+
+
+###GET TOUR BY DESTINATION
+GET http://localhost:4115/tour/view-tour-by-destination/Paris
+
+
+
+###activate tour
+PUT http://localhost:4115/tour/activate-tour/cf688843-0809-41ff-8742-4214420777cf
+
+
+
+####deactivate tour
+PUT http://localhost:4115/tour/deactivate-tour/cf688843-0809-41ff-8742-4214420777cf
+
+
+###get deactivated tours
+GET http://localhost:4115/tour/view_inactive_tours
+
+
+###get activated tours
+GET http://localhost:4115/tour/view_active_tours
+
+
+###boolean isactive?
+GET http://localhost:4115/tour/isActive/cf688843-0809-41ff-8742-4214420777cf
+###returns null or object

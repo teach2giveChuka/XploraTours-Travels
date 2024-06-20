@@ -1,0 +1,57 @@
+###register User
+POST http://localhost:4115/user/register
+Content-Type: application/json
+
+{           
+    "firstname": "John",
+    "lastname": "Doe",
+    "email": "johndoes@yopmail.com",
+    "password": "passWord"
+}
+
+
+
+### All users
+GET http://localhost:4115/user/all
+
+
+
+
+###HARD Delete DANGER! User
+DELETE http://localhost:4115/user/delete/e2115fd1-813e-4f1f-aac8-a12f6af4b526
+
+
+
+
+###soft deleteuser
+PUT http://localhost:4115/user/softdelete/1fd73e47-380b-4d5e-a3c7-4d84a422f30c
+
+###restore user
+PUT http://localhost:4115/user/restore/1fd73e47-380b-4d5e-a3c7-4d84a422f30c
+
+
+
+
+
+###Update user
+PUT http://localhost:4115/user/update/1fd73e47-380b-4d5e-a3c7-4d84a422f30c
+Content-Type: application/json
+
+{
+    "firstname": "John",
+    "lastname": "Doe",
+    "email": "JOHMAIL@gmail.om",
+    "password": "<PASSWORD>"
+}
+
+
+
+###userS Count
+GET http://localhost:4115/user/count
+
+
+
+
+
+###single user by id
+GET http://localhost:4115/user/1fd73e47-380b-4d5e-a3c7-4d84a422f30c
