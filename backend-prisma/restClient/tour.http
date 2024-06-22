@@ -3,14 +3,19 @@ POST http://localhost:4115/tour/create-tour
 Content-Type: application/json
 
 {
-    "destination": "Kenya",
+    "destination": "MachaBee",
     "duration": 5,
     "price": 1500,
-    "tourType": "Sightseeing",
+    "tourType": "Sighting",
     "createdAt": "2024-06-20T09:17:50.238Z",
     "startDate": "2024-07-01T00:00:00.000Z",
     "endDate": "2024-07-06T00:00:00.000Z",
     "description": "A breathtaking 5-day sightseeing tour of Paris, covering all major attractions and landmarks."
+    ,
+        "destinationImage1": "String?",
+        "destinationImage2" :"String?",
+        "destinationImage3" :"String?",
+        "DestinationImage4": "String?"  
 }
 
 
@@ -27,12 +32,16 @@ PUT http://localhost:4115/tour/update-tour/cf688843-0809-41ff-8742-4214420777cf
 Content-Type: application/json
     
     {
-        "destination": "Paris",
+        "destination": "KenyaHere",
         "price": 1500,
         "tourType": "Sightseeing",
         "createdAt": "2024-06-20T09:17:50.238Z",
         "startDate": "2024-07-01T00:00:00.000Z",
-        "endDate": "2024-07-06T00:00:00.000Z"
+        "endDate": "2024-07-06T00:00:00.000Z",
+        "destinationImage1": "String?",
+        "destinationImage2" :"String?",
+        "destinationImage3" :"String?",
+        "DestinationImage4": "String?"        
     }
 
 ###get one tour

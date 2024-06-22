@@ -8,4 +8,8 @@ export interface Tour {
     endDate: Date;
     isActive: boolean;
     description: string;
+    destinationImage1: string;
+    destinationImage2: string;
+    destinationImage3: string;
+    destinationImage4: string;
 }

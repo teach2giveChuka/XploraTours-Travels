@@ -18,7 +18,8 @@ export class UserService {
                     firstname: user.firstname,
                     lastname: user.lastname,
                     email: user.email,
-                    password: hashedPW                
+                    password: hashedPW,
+                    profileImage:user.profileImage               
                 }
             });
 
@@ -78,10 +79,14 @@ export class UserService {
                     firstname: user.firstname,
                     lastname: user.lastname,
                     email: user.email,
-                    password: hashedPW
+                    password: hashedPW,
+                    profileImage:user.profileImage
                 }
             });
-            return updatedUser;
+            return{
+                message: "User updated Succesfuly :)",
+                user:  updatedUser
+            }
         } catch (error) {
             return {
                 message: "404 User Not Found :(",

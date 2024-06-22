@@ -1,0 +1,24 @@
+###create review
+POSt http://localhost:4115/review/create-review
+Content-Type: application/json
+
+{
+   "userId": "1fd73e47-380b-4d5e-a3c7-4d84a422f30c",
+    "tourId": "cf688843-0809-41ff-8742-4214420777cf",
+    "rating": 5,
+    "content": "This is a great tour"
+}
+
+###view reviewAll review
+GET http://localhost:4115/review/view-all-reviews
+
+###delete review(Note to future self pass reviewId as id)
+DELETE http://localhost:4115/review/delete-review/1fd73e47-380b-4d5e-a3c7-4d84a422f30c
+
+###view reviews by tour(tour id as id)
+GET http://localhost:4115/review/view-tour-reviews/cf688843-0809-41ff-8742-4214420777cf
+
+
+###view reviews by user(user id as id)  rror handling inui, if array is empty, return an erro message of user not found
+GET http://localhost:4115/review/view-user-reviews/1fd73e47-380b-4d5e-a3c7-4d84a422f30c
+

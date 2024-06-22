@@ -7,7 +7,7 @@ let servoce = new UserService
 export class UserController {
     async createUser(req: Request, res: Response) {
         try {
-            let { firstname, lastname, email, password } = req.body
+            let { firstname, lastname, email, password, profileImage } = req.body
             let response = await servoce.createUser(req.body)
             return res.json(response)
         } catch (error) {

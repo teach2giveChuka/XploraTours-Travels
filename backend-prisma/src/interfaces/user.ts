@@ -5,6 +5,7 @@ export interface User {
   lastname: string;
   email: string;
   password: string;
+  profileImage: string;
 }
 
 export interface tokenInfo {

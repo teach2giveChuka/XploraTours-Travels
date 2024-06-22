@@ -2,9 +2,9 @@ import { PrismaClient } from "@prisma/client";
 import { Tour } from "../interfaces/tour";
 import { v4 } from "uuid";
 
-export class tourService{
+export class tourService {
     prisma = new PrismaClient({
-        log:['error']
+        log: ['error']
     });
 
     async createTour(tour: Tour) {
@@ -19,30 +19,36 @@ export class tourService{
                     startDate: tour.startDate,
                     endDate: tour.endDate,
                     isActive: tour.isActive,
-                    description: tour.description || "No description provided"                }
+                    description: tour.description || "No description provided",
+                    destinationImage1: tour.destinationImage1,
+                    destinationImage2: tour.destinationImage2,
+                    destinationImage3: tour.destinationImage3,
+                    DestinationImage4: tour.destinationImage4
+
+                }
             });
-    
+
             return {
                 message: "Tour created successfully :)",
                 responseCode: 200
             };
         } catch (error) {
-            console.error("Error creating tour:", error); 
+            console.error("Error creating tour:", error);
             return {
                 message: "An unexpected error occurred :(",
                 responseCode: 500,
-                error: error instanceof Error ? error.message : "Unknown error" 
+                error: error instanceof Error ? error.message : "Unknown error"
             };
         }
     }
 
-   
+
     async viewAllTours() {
         const tours = await this.prisma.tour.findMany();
         return tours;
     }
 
-    
+
     async deleteTour(tourId: string) {
         try {
             const tour = await this.prisma.tour.delete({
@@ -63,7 +69,7 @@ export class tourService{
         }
     }
 
-    
+
     async updateTour(tourId: string, tour: Tour) {
         try {
             const updatedTour = await this.prisma.tour.update({
@@ -76,7 +82,11 @@ export class tourService{
                     tourType: tour.tourType,
                     startDate: tour.startDate,
                     endDate: tour.endDate,
-                    isActive: tour.isActive
+                    isActive: tour.isActive,
+                    destinationImage1: tour.destinationImage1,
+                    destinationImage2: tour.destinationImage2,
+                    destinationImage3: tour.destinationImage3,
+                    DestinationImage4: tour.destinationImage4
                 }
             });
             return {
@@ -92,7 +102,7 @@ export class tourService{
         }
     }
 
-   
+
     async getTour(tourId: string) {
         const tour = await this.prisma.tour.findUnique({
             where: {
@@ -111,7 +121,7 @@ export class tourService{
         return tour;
     }
 
-   
+
     async activateTour(tourId: string) {
         try {
             const updatedTour = await this.prisma.tour.update({
@@ -135,7 +145,7 @@ export class tourService{
         }
     }
 
-   
+
     async deactivateTour(tourId: string) {
         try {
             const updatedTour = await this.prisma.tour.update({
@@ -159,7 +169,7 @@ export class tourService{
         }
     }
 
-    
+
     async searchTour(destination: string) {
         const tour = await this.prisma.tour.findMany({
             where: {
@@ -171,10 +181,10 @@ export class tourService{
         return tour;
     }
 
-   
-   
 
-    
+
+
+
     async getActiveTours() {
         try {
             const tour = await this.prisma.tour.findMany({
@@ -183,16 +193,16 @@ export class tourService{
                 }
             });
             return tour;
-    }
-    catch (error) {
-        console.log(error)
-        return error;
-    }
+        }
+        catch (error) {
+            console.log(error)
+            return error;
+        }
     }
 
-    
+
     async getInactiveTours() {
-        try{
+        try {
             const tour = await this.prisma.tour.findMany({
                 where: {
                     isActive: false
@@ -208,25 +218,25 @@ export class tourService{
 
     //is active?  returns a boolean whether the isActive field is 1 or 0 if 1 return true, if 0, return false
     async isActive(tourId: string) {
-        try{
+        try {
             const isactive = await this.prisma.tour.findUnique({
                 where: {
                     id: tourId,
                     isActive: true
                 }
             });
-            if(isactive){
+            if (isactive) {
                 return true
             }
             else {
                 return false
             }
         } catch (error) {
-            console.error("Error checking if tour is active:", error); 
+            console.error("Error checking if tour is active:", error);
             return {
                 message: "An unexpected error occurred :(",
                 responseCode: 500,
-                error: error instanceof Error ? error.message : "Unknown error" 
+                error: error instanceof Error ? error.message : "Unknown error"
             };
         }
     }

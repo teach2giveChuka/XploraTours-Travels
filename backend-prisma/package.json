@@ -5,8 +5,8 @@
   "scripts": {
     "test": "",
     "build": "tsc --w",
-    "dev": "nodemon server.js",
-    "run": "node server.js"
+    "dev": "nodemon dist/server.js",
+    "start": "node dist/server.js"
   },
   "keywords": [],
   "author": "",

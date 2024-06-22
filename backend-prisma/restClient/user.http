@@ -5,8 +5,9 @@ Content-Type: application/json
 {           
     "firstname": "John",
     "lastname": "Doe",
-    "email": "johndoes@yopmail.com",
-    "password": "passWord"
+    "email": "johndoess@yopmail.com",
+    "password": "passWord",
+    "profileImage": "somerandomString url"
 }
 
 
@@ -38,10 +39,11 @@ PUT http://localhost:4115/user/update/1fd73e47-380b-4d5e-a3c7-4d84a422f30c
 Content-Type: application/json
 
 {
-    "firstname": "John",
+    "firstname": "Johnie",
     "lastname": "Doe",
     "email": "JOHMAIL@gmail.om",
-    "password": "<PASSWORD>"
+    "password": "passswad",
+    "profileImage": "imageuRL"
 }
 
 
