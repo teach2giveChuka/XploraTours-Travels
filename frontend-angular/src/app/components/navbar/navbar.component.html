@@ -1,0 +1,23 @@
+<nav>
+    <div class="logo">
+        <!-- Hamburger icon -->
+        <span class="bar" #barIcon (click)="toggleMenu()" [class.active]="menuActive && isMobileViewport">&#9776;</span>
+        <h3 style="font-weight: 500;"><span style="color: #004047; font-size: 29px; font-weight: 600;">Xplora</span>T&T</h3>
+    </div>
+    <!-- Menu content -->
+    <div class="menu" [class.active]="menuActive">
+        <!-- Close icon -->
+        <span class="close" #closeIcon (click)="toggleMenu()">&times;</span>
+        <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Services</a></li>
+            <li><a href="#">Contact</a></li>
+        </ul>
+    </div>
+    <!-- Sign up/login links -->
+    <div class="signup-login">
+        <a href="#">Login</a>
+        <a href="#">Sign Up</a>
+    </div>
+</nav>

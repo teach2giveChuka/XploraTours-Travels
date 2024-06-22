@@ -60,7 +60,7 @@ export class ReviewService {
         }
     }
 
-    //update review
+    
     async updateReview(reviewId: string, review: Review) {
         try {
             await this.prisma.review.update({

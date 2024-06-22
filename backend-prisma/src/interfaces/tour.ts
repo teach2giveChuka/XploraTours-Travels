@@ -2,7 +2,7 @@ export interface Tour {
     id: string;
     destination: string;
     price: number;
-    tourType: 'Hikes' | 'Sightseeing' | 'Cultural excursions' | 'Beach' | 'Hiking' | 'Weekend gateways';
+    tourType: 'Hiking' | 'Sightseeing' | 'Cultural excursions' | 'Beach' | 'Weekend gateways';
     createdAt: Date;
     startDate: Date;
     endDate: Date;
