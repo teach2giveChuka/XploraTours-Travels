@@ -15,16 +15,15 @@ export class tourService {
                     destination: tour.destination,
                     price: tour.price,
                     tourType: tour.tourType,
-                    createdAt: new Date(),
-                    startDate: tour.startDate,
-                    endDate: tour.endDate,
-                    isActive: tour.isActive,
+                    createdAt: new Date().toISOString(), // Convert current date to ISO format
+                    startDate: new Date(tour.startDate).toISOString(), // Convert startDate to ISO format
+                    endDate: new Date(tour.endDate).toISOString(), 
+                    isActive: tour.isActive || true,
                     description: tour.description || "No description provided",
                     destinationImage1: tour.destinationImage1,
                     destinationImage2: tour.destinationImage2,
                     destinationImage3: tour.destinationImage3,
                     DestinationImage4: tour.destinationImage4
-
                 }
             });
 

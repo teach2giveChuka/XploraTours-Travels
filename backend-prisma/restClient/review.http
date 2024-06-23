@@ -9,7 +9,7 @@ Content-Type: application/json
     "content": "This is a great tour"
 }
 
-###view reviewAll review
+###view reviews All reviews
 GET http://localhost:4115/review/view-all-reviews
 
 ###delete review(Note to future self pass reviewId as id)

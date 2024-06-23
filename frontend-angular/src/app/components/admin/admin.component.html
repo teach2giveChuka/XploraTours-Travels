@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - Tours and Travels</title>
+
+</head>
+
+<body>
+
+    <div *ngIf="successMessage" class="message success">{{successMessage}}</div>
+    <div *ngIf="errorMessage" class="message error">{{errorMessage}}</div>
+    <div class="container">
+        <aside class="sidebar">
+            <ul>
+                <li>Dashboard</li>
+                <li (click)="openCreateForm()">Create Tour</li>
+                <li>Update Tour</li>
+                <li>Delete Tour</li>
+                <li>View Tours</li>
+                <li>View Users</li>
+                <li>Delete User</li>
+                <li>Settings</li>
+            </ul>
+        </aside>
+        <main class="main-content">
+
+            <!-- Add this inside your main content or wherever appropriate -->
+            <div class="form-container" *ngIf="showForm">
+                <form [formGroup]="tourForm" (ngSubmit)="onSubmit()" @slideInAnimation>
+                    <button (click)="toggleFormVisibility()">Hide/Show Form</button>
+                    <!-- Form fields -->
+                    <input formControlName="destination" type="text" placeholder="Destination">
+                    <input formControlName="price" type="number" placeholder="Price">
+                    <input formControlName="tourType" type="text" placeholder="Tour Type">
+                    <input formControlName="startDate" type="date">
+                    <input formControlName="endDate" type="date">
+                    <textarea formControlName="description" placeholder="Description"></textarea>
+                    <!-- Image URLs -->
+                    <input formControlName="destinationImage1" type="text" placeholder="Image URL 1">
+                    <input formControlName="destinationImage2" type="text" placeholder="Image URL 2">
+                    <input formControlName="destinationImage3" type="text" placeholder="Image URL 3">
+                    <input formControlName="destinationImage4" type="text" placeholder="Image URL 4">
+
+
+                    <!-- Your form -->
+                    <div *ngIf="showForm">
+                        <!-- Form content here -->
+                    </div>
+                    <!-- Conditional Buttons -->
+                    <button type="submit" *ngIf="!isUpdateMode" (click)="createNewTour(tourForm.value)">Create
+                        Tour</button>
+                    <button type="submit" *ngIf="isUpdateMode" (click)="updateTour(tourForm.value)">Update Tour</button>
+                </form>
+            </div>
+            <div class="stats">
+                <div class="stat-item">
+                    <div class="stat-number">{{count}}</div>
+                    <div class="stat-label">Registered Users</div>
+
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">{{bookingsCount}}</div>
+                    <div class="stat-label">Booked Users</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">{{activeToursCount}}</div>
+                    <div class="stat-label">Ongoing Tours</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">Ksh. &nbsp;{{totalEarned}}</div>
+                    <div class="stat-label">Total Earnings</div>
+                </div>
+            </div>
+            <div class="content">
+                <div class="table-container">
+                    <div class="tasks">
+                        <div class="tasks-header">
+                            <h3>Ongoing Tours</h3>
+                            <button>View more</button>
+                        </div>
+                        <table>
+                            <tr>
+
+                                <th>Tour Type</th>
+                                <th>Destination</th>
+                                <th>Price</th>
+                                <th>Start Date</th>
+                                <th>End Date</th>
+                                <th>Status</th>
+                                <th>Destination Image</th>
+                                <th>Actions</th>
+                            </tr>
+                            <tr *ngFor="let tours of tours">
+                                <td>{{tours.tourType}}</td>
+                                <td>{{tours.destination}}</td>
+                                <td>${{tours.price}}</td>
+                                <td>{{tours.startDate | date:'yyyy-MM-dd'}}</td>
+                                <td>{{tours.endDate | date:'yyyy-MM-dd'}}</td>
+                                <td>{{tours.isActive ? 'Open' : 'Closed'}}</td>
+                                <td><img src="{{tours.destinationImage1}}" alt="{{tours.destination}}"></td>
+                                <td>
+                                    <div class="actions-container">
+                                        <button (click)="viewTourById(tours.id)">Controls</button>
+                                        <div class="hidden-actions">
+                                            <button (click)=activateTour(tours.id)>Activate</button>
+                                            <button (click)=deactivateTour(tours.id)
+                                                style="background-color: rgb(198, 81, 81);">Deactivate</button>
+                                            <!-- Assuming 'tour' is the variable holding the data of the tour you want to update -->
+                                            <button (click)="openUpdateForm(tours)"
+                                                style="background-color: rgb(0, 85, 255);">Update</button>
+                                            <button (click)=deleteTour(tours.id)
+                                                style="background-color: rgb(246, 73, 73);">Delete</button>
+                                        </div>
+                                    </div>
+                                </td>
+
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="projects">
+                        <div class="projects-header">
+                            <h3>Latest Users</h3>
+                            <button>View more</button>
+                        </div>
+                        <table>
+                            <tr>
+                                <th>Profile Image</th>
+                                <th>First Name</th>
+                                <th>Last Name</th>
+                                <th>Email</th>
+                                <th>Account Status</th>
+                            </tr>
+                            <tr *ngFor="let user of users">
+                                <td><img [src]="user.profileImageUrl" alt="{{user.firstname}}'s Profile Image"></td>
+                                <td>{{user.firstname}}</td>
+                                <td>{{user.lastname}}</td>
+                                <td>{{user.email}}</td>
+                                <td>{{user.accountStatus}}</td>
+                                <td>
+                                    <div class="actions-container">
+                                        <button (click)="fetchUserById(user.userId)">Controls</button>
+                                        <div class="hidden-actions">
+                                            <button (click) = softDelete(user.userId) >Soft Delete</button>
+                                            <button (click) = restoreUser(user.userId)>Restore</button>
+                                            <button style="background-color: rgb(246, 73, 73);">Force Purge</button>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+</body>
+
+</html>

@@ -67,12 +67,12 @@ video#video{
 }
 
 .header-info-par a:after{
-    content: "Read More";
+    content: "Get Started";
     position: absolute;
     top: 0;
     left: 0;
     right: 0;
-    background-color: #00a8b4;
+    background-color: #02636E;
     color: #fff;
     width: 0%;
     height: 100%;
@@ -216,7 +216,7 @@ section {
 
 /* Package */
 .pakage{
-    background-color: #064951;
+    background: linear-gradient(#064951, #577E82);
     width: 100vw;
     
 }
@@ -374,9 +374,10 @@ figcaption h3 a {
 /* Footer */
 
 footer {
+    
     padding:  1rem;
     width: 100%;
-    background-color: #9a9999;
+    background-color: #577e82;
 }
 
 footer .footer {

@@ -12,10 +12,10 @@ Content-Type: application/json
     "endDate": "2024-07-06T00:00:00.000Z",
     "description": "A breathtaking 5-day sightseeing tour of Paris, covering all major attractions and landmarks."
     ,
-        "destinationImage1": "String?",
-        "destinationImage2" :"String?",
-        "destinationImage3" :"String?",
-        "DestinationImage4": "String?"  
+        "destinationImage1": "String image url",
+        "destinationImage2" :"String image url",
+        "destinationImage3" :"String image url",
+        "DestinationImage4": "String image url"  
 }
 
 
@@ -38,10 +38,10 @@ Content-Type: application/json
         "createdAt": "2024-06-20T09:17:50.238Z",
         "startDate": "2024-07-01T00:00:00.000Z",
         "endDate": "2024-07-06T00:00:00.000Z",
-        "destinationImage1": "String?",
-        "destinationImage2" :"String?",
-        "destinationImage3" :"String?",
-        "DestinationImage4": "String?"        
+        "destinationImage1": "String image url",
+        "destinationImage2" :"String image url",
+        "destinationImage3" :"String    image url",
+        "DestinationImage4": "String image url",        
     }
 
 ###get one tour

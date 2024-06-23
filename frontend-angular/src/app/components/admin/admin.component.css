@@ -1,0 +1,445 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #1a1a1a;
+  color: #ccc;
+  display: flex;
+  height: 100;
+}
+
+.container {
+  display: flex;
+  width: 100%;
+}
+
+.sidebar {
+  width: 200px;
+  background-color: #262626;
+  padding: 20px;
+}
+
+.sidebar ul {
+  list-style: none;
+}
+
+.sidebar ul li {
+  padding: 10px 0;
+  cursor: pointer;
+}
+
+.main-content {
+  flex: 1;
+  padding: 20px;
+}
+
+.stats {
+  display: flex;
+  justify-content: space-between;
+}
+
+.stat-item {
+  background-color: #333;
+  padding: 30px;
+  text-align: center;
+  border-radius: 5px;
+  flex: 1;
+  margin: 0 10px;
+}
+
+.stat-item .stat-number {
+  font-size: 27px;
+  color: #b7f11c;
+}
+
+.stat-item .stat-label {
+  margin-top: 10px;
+}
+
+.content {
+  margin-top: 20px;
+}
+
+.tasks, .projects, .users {
+  background-color: #333;
+  padding: 20px;
+  border-radius: 5px;
+  margin-bottom: 20px;
+}
+
+.tasks-header, .projects-header, .users-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.tasks-header button, .projects-header button, .users-header button {
+  background-color: #b7f11c;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th, td {
+  padding: 10px;
+  text-align: left;
+  border-bottom: 1px solid #444;
+}
+
+
+.hidden-actions {
+  display: none;
+  position: absolute;
+  background-color: #585858;
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+  padding: 12px 16px;
+  z-index: 1;
+}
+
+.actions-container:hover .hidden-actions {
+  display: block;
+}
+
+.actions-container {
+  position: relative;
+  display: inline-block;
+}
+
+.actions-container button {
+  border: none;
+  cursor: pointer;
+}
+
+.actions-container button {
+  background-color: #4CAF50; /* Green */
+  color: white;
+  padding: 10px 24px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.actions-container button:hover {
+  background-color: #45a049;
+}
+.hidden-actions {
+  display: none;
+  position: absolute;
+  background-color: #393939;
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+  padding: 12px 16px;
+  z-index: 1;
+  border-radius: 5px;
+}
+.hidden-actions button {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  margin: 5px 0;
+  background-color: #0f5d4e;
+  border: none;
+  border-radius: 5px;
+  text-align: left;
+}
+
+.message {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 1000;
+  padding: 10px;
+  border-radius: 5px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  animation: slideIn 0.5s ease-out;
+}
+
+.success {
+  background-color: #4CAF50; /* Green */
+  color: white;
+}
+
+.error {
+  background-color: #F44336; /* Red */
+  color: white;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    right: -100px;
+  }
+  to {
+    opacity: 1;
+    right: 20px;
+  }
+}
+
+.form-container {
+  animation: slideIn 0.5s forwards;
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+/* Overlay styles */
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(5px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  visibility: hidden; /* Hide by default */
+  opacity: 0;
+  transition: opacity 0.5s, visibility 0.5s;
+}
+
+/* Show overlay when active */
+.overlay.active {
+  visibility: visible;
+  opacity: 1;
+}
+
+/* Form popup styles */
+.form-popup {
+  background: #333; /* Dark grey background */
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  width: 90%;
+  max-width: 500px; /* Adjust based on your preference */
+}
+
+.form-popup input,
+.form-popup button {
+  margin: 10px 0;
+}
+
+/* Exit button styles */
+.exit-button {
+  background: #198754; /* Green color */
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+/* Input styles */
+.form-popup input {
+  width: 100%;
+  padding: 10px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+/* Overlay styles */
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(5px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  visibility: hidden; /* Hide by default */
+  opacity: 0;
+  transition: opacity 0.5s, visibility 0.5s;
+}
+
+/* Show overlay when active */
+.overlay.active {
+  visibility: visible;
+  opacity: 1;
+}
+
+/* Form popup styles */
+.form-popup {
+  background: #333; /* Dark grey background */
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  width: 90%;
+  max-width: 500px; /* Adjust based on your preference */
+}
+
+.form-popup input,
+.form-popup button {
+  margin: 10px 0;
+}
+
+/* Exit button styles */
+.exit-button {
+  background: #198754; /* Green color */
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+/* Input styles */
+.form-popup input {
+  width: 100%;
+  padding: 10px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(5px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.form-container {
+  background: #333; /* Dark grey */
+  padding: 20px;
+  border-radius: 10px;
+  width: 90%;
+  max-width: 500px;
+}
+
+.form-container input,
+.form-container textarea,
+.form-container button {
+  display: block;
+  width: 100%;
+  margin: 10px 0;
+  padding: 10px;
+}
+
+.form-container button {
+  background-color: #198754; /* Green */
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.exit-button {
+  float: right;
+  background-color: #444;
+  border: none;
+  color: white;
+  cursor: pointer;
+}
+
+
+/* Media Query for smaller screens */
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column;
+  }
+  .sidebar {
+    display: flex;
+    background-color: #293703;
+    flex-direction: row;
+    width: 100%;
+    padding: 10px;
+  }
+   .sidebar ul{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    align-items: center;
+   
+   }
+   li{
+    border-bottom: 2px solid white;
+   }
+  .main-content {
+    padding: 10px;
+  }
+}
+
+/* Overlay styles */
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(5px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  visibility: hidden; /* Hide by default */
+  opacity: 0;
+  transition: opacity 0.5s, visibility 0.5s;
+}
+
+/* Show overlay when active */
+.overlay.active {
+  visibility: visible;
+  opacity: 1;
+}
+
+/* Form popup styles */
+.form-popup {
+  background: #333; /* Dark grey background */
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  width: 90%;
+  max-width: 500px; /* Adjust based on your preference */
+}
+
+.form-popup input,
+.form-popup button {
+  margin: 10px 0;
+}
+
+/* Exit button styles */
+.exit-button {
+  background: #198754; /* Green color */
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+/* Input styles */
+.form-popup input {
+  width: 100%;
+  padding: 10px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
