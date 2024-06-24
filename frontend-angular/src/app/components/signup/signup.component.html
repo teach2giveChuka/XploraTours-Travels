@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <title>Signup</title>
+</head>
+
+<body style="background-image: url('assets/imgs/wildebeast.jpg');">
+    <app-navbar></app-navbar>
+
+    <div class="wrapper">
+        <div class="top">
+            <span>Have an account? <a href="#" onclick="login()">Login</a></span>
+            <header>Sign Up</header>
+        </div>
+
+        <div class="form-box">
+            <div class="login-container" id="login">
+                <form #signupForm="ngForm" (ngSubmit)="submitForm(signupForm)">
+                    <div class="input-box">
+                        <input type="text" class="input-field" placeholder="Firstname" name="firstname" required [(ngModel)]="signup.firstname" #firstnameInput="ngModel">
+                        <i class="bx bx-user"></i>
+                        <div *ngIf="firstnameInput.invalid && (firstnameInput.dirty || firstnameInput.touched)">
+                            <small>Please enter a valid first name.</small>
+                        </div>
+                    </div>
+
+                    <div class="input-box">
+                        <input type="text" class="input-field" placeholder="Lastname" name="lastname" required [(ngModel)]="signup.lastname" #lastnameInput="ngModel">
+                        <i class="bx bx-user"></i>
+                        <div *ngIf="lastnameInput.invalid && (lastnameInput.dirty || lastnameInput.touched)">
+                            <small>Please enter a valid last name.</small>
+                        </div>
+                    </div>
+
+                    <div class="input-box">
+                        <input type="email" class="input-field" placeholder="Email" name="email" required [(ngModel)]="signup.email" #emailInput="ngModel">
+                        <i class="bx bx-envelope"></i>
+                        <div *ngIf="emailInput.invalid && (emailInput.dirty || emailInput.touched)">
+                            <small>Please enter a valid email.</small>
+                        </div>
+                    </div>
+
+                    <div class="input-box">
+                        <input type="password" class="input-field" placeholder="Password" name="password" required [(ngModel)]="signup.password" #passwordInput="ngModel">
+                        <i class="bx bx-lock-alt"></i>
+                        <div *ngIf="passwordInput.invalid && (passwordInput.dirty || passwordInput.touched)">
+                            <small>Please enter a valid password.</small>
+                        </div>
+                    </div>
+
+                    <div class="input-box">
+                        <input type="submit" class="submit" value="Register" [disabled]="signupForm.invalid">
+                    </div>
+
+                    <div class="two-col">
+                        <div class="one">
+                            <input type="checkbox" id="login-check">
+                            <label for="login-check"> Remember Me</label>
+                        </div>
+                    </div>
+                </form>
+                <app-notification></app-notification>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
