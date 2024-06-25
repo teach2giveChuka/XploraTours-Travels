@@ -70,6 +70,17 @@ body {
   border-radius: 5px;
   margin-bottom: 20px;
 }
+.projects img{
+  height: 70px;
+  width: 70px;
+  border-radius: 100%;
+
+}
+.tasks img{
+  height: 70px;
+  width: 100%;
+  /* border-radius: 100%; */
+}
 
 .tasks-header, .projects-header, .users-header {
   display: flex;

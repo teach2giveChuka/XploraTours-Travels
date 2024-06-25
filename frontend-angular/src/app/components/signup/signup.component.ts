@@ -6,11 +6,12 @@ import { CommonModule } from '@angular/common';
 import { FormsModule, NgForm } from '@angular/forms';
 import { NotificationComponent } from '../notification/notification.component';
 import { SignUpResponse } from '../../interfaces/responses';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-signup',
   standalone: true,
-  imports: [NavbarComponent, CommonModule, FormsModule, NotificationComponent],
+  imports: [NavbarComponent, CommonModule, FormsModule, NotificationComponent, RouterLink],
   templateUrl: './signup.component.html',
   styleUrl: './signup.component.css'
 })
@@ -29,12 +30,19 @@ export class SignupComponent {
   submitForm(form: NgForm) {
     if (form.valid) {
       this.signupService.signupUser(this.signup).subscribe(
-        res => {
-          this.notification.show('User signed up successfully!', 'success');
-          console.log('User signed up successfully!', res);
+        (res:any) => {
+          const response = res as SignUpResponse;
+          if (response.responseCode === 200) {
+            this.notification.show('Registration was completed successfuly :) go to login', 'success');
+            console.log('User registered in successfully!', response);
+          } else {
+            console.log('Registration failed :( ', response.message);
+            this.notification.show(response.message, 'error');
+          }
         },
+      
         err => {
-          this.notification.show('Error signing up user', 'error');
+          this.notification.show('Error during Registration', 'error');
           console.log('Error signing up user:', err);
         }
       );

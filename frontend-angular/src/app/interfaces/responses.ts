@@ -6,3 +6,9 @@ export interface Responses {
     message: string;
     responseCode: number;
   }
+
+export interface LoginResponse {
+  responseCode: number;
+  message: string;
+  role: string;
+}

@@ -7,6 +7,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Booking } from '../../interfaces/booking';
 import { User } from '../../interfaces/user';
+import { AuthService } from '../../services/auth.service';
+import { UserService } from '../../services/user.service';
 
 
 
@@ -35,7 +37,7 @@ export class AdminComponent implements OnInit {
   editingTour: Tour | null = null;
 
 
-  constructor(private adminService: AdminService, private fb: FormBuilder, private router: Router) {
+  constructor(private adminService: AdminService, private fb: FormBuilder, private router: Router, private authService : AuthService) {
     this.tourForm = this.fb.group({
       id: [''],
       destination: [''],
@@ -57,6 +59,7 @@ export class AdminComponent implements OnInit {
 
   //onload
   ngOnInit(): void {
+    this.checkToken();
     this.fetchAllTours();
     this.totalEarnedCollectively();
     this. getAllBookings();
@@ -334,7 +337,26 @@ toggleFormVisibility(): void {
   this.showForm = !this.showForm;
 }  
 
+//verify token validity
+checkToken(): void {
+  const token = localStorage.getItem('userData');
+  if (token) {
+    this.authService.verifyToken(token).subscribe({
+      next: (data) => {
+        console.log('Token is valid:', data);
+    this.fetchAllTours();   
+    this. getAllBookings();   
+    this.viewAllActiveTours();
+    this.fetchAllUsers()
+      },
+      error: (error) => {
+        console.error('Token is invalid:', error);
+        this.router.navigate(['/login']);
+      }
+    });
+  }
+  else {
+    this.router.navigate(['/login']);
+  }
 }
-
-
-
+}

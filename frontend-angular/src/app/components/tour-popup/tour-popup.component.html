@@ -1,0 +1,18 @@
+<div class="tour-details">
+    <div class="button">
+        <button (click)="close()"><i class="fa-solid fa-xmark"></i></button>
+    </div>
+    <h2>{{tour.destination}}</h2>
+    <p>{{tour.description}}</p>
+    <p><strong>Tour Type:</strong> {{tour.tourType}}</p>
+    <p><strong>Start Date:</strong> {{tour.startDate | date}}</p>
+    <p><strong>End Date:</strong> {{tour.endDate | date}}</p>
+    <p><strong>Status:</strong> {{tour.isActive ? 'Ongoing' : 'Awaiting'}}</p>
+    <img style="width: 100%; border-radius: 7px;"  src="{{tour.destinationImage1}}" alt="Image 1">
+    <div class="images">
+        <img style="width: 48%;" src="{{tour.destinationImage2}}" alt="Image 2">
+    <img style="width: 48%;" src="{{tour.destinationImage3}}" alt="Image 3">
+    </div>
+
+  </div>
+  

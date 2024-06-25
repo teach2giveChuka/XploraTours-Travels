@@ -134,7 +134,7 @@
                                 <th>Account Status</th>
                             </tr>
                             <tr *ngFor="let user of users">
-                                <td><img [src]="user.profileImageUrl" alt="{{user.firstname}}'s Profile Image"></td>
+                                <td><img src={{user.profileImage}} alt="{{user.firstname}}'s Profile Image"></td>
                                 <td>{{user.firstname}}</td>
                                 <td>{{user.lastname}}</td>
                                 <td>{{user.email}}</td>

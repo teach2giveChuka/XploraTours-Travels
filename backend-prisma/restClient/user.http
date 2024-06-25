@@ -19,16 +19,16 @@ GET http://localhost:4115/user/all
 
 
 ###HARD Delete DANGER! User
-DELETE http://localhost:4115/user/delete/e2115fd1-813e-4f1f-aac8-a12f6af4b526
+DELETE http://localhost:4115/user/delete/9442680d-e24b-4319-b5ed-92b7729181f2
 
 
 
 
 ###soft deleteuser
-PUT http://localhost:4115/user/softdelete/1fd73e47-380b-4d5e-a3c7-4d84a422f30c
+PUT http://localhost:4115/user/softdelete/c62f0060-3c4f-4fce-8940-f3d9cb070514
 
 ###restore user
-PUT http://localhost:4115/user/restore/1fd73e47-380b-4d5e-a3c7-4d84a422f30c
+PUT http://localhost:4115/user/restore/c62f0060-3c4f-4fce-8940-f3d9cb070514
 
 
 

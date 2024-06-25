@@ -10,16 +10,17 @@ export class AuthService {
     });
 
     async userLogin(user: User) {
-        const userExists = await this.prisma.user.findUnique({
+        const userExists = await this.prisma.user.findFirst({
             where: {
-                email: user.email
-            }
+                email: user.email,
+                accountStatus: 'active', 
+            },
         });
 
         if (!userExists) {
             return {
-                message: "User not found :(",
-                responseCode: 404
+                message: "Account not found :(",
+                responseCode: 404,
             };
         }
 
@@ -38,7 +39,8 @@ export class AuthService {
         return {
             message: "Login successful :)",
             responseCode: 200,
-            token
+            token,
+            role: userExists.role,
             
         };
     }

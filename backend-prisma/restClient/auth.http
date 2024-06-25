@@ -4,11 +4,11 @@ POST http://localhost:4115/auth/login
 Content-Type: application/json
 
 {
-      "email": "johndoes@yopmail.com",
+  "email": "Xzigyu@yopmail.com",
     "password": "passWord"
 }
 
 ### Check token details verifying atuh token verification
 GET http://localhost:4115/auth/check-details 
 Content-Type: application/json
-token:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI3OTQ4NWNiMi0yNTliLTRlODEtODkzMy01YzMxNzMyYzZlMzIiLCJlbWFpbCI6ImpvaG5kb2VzQHlvcG1haWwuY29tIiwiaWF0IjoxNzE5MDQ5NDU3LCJleHAiOjE3MTkwNTMwNTd9.VRckOfP5FamPxFu-BNYJAr86iq5DO63BqC-qIsU5UCM
+token:eyJbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI4Y2Y4ZmMzMi0wYjVmLTRmMWMtODMxYy04Y2QxOTZhNTEyNjQiLCJlbWFpbCI6ImtlbkB5b3BtYWlsLmNvbSIsImlhdCI6MTcxOTI3MjE1MywiZXhwIjoxNzE5Mjc1NzUzfQ.DfJ4h2IR6JCjk4kIeAhjtETrMTqfj6DI_kVIA8ToPBw
