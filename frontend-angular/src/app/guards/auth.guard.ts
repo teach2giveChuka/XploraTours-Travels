@@ -15,7 +15,6 @@ export class AuthGuard implements CanActivate {
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
 
-    // Retrieve token from localStorage
     const userData = localStorage.getItem('userData');
     const token = userData ? JSON.parse(userData).token : null;
 
@@ -25,9 +24,9 @@ export class AuthGuard implements CanActivate {
       return false;
     }
 
-    // Verify token validity
+
     return this.authService.verifyToken(token).pipe(
-      map(() => true), // Return true if verification succeeds
+      map(() => true), 
       catchError(() => {
         console.error('Error verifying token, redirecting to login.');
         this.router.navigate(['/login']);

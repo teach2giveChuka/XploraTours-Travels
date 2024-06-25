@@ -9,6 +9,12 @@
 </head>
 
 <body>
+    <div class="message" style="display: flex; justify-content: flex-end;">
+        <div style="background-color: rgb(123, 225, 123);  padding: 10px; border-radius: 10px;" *ngIf="successMessage"
+            class="message success">{{successMessage}}</div>
+        <div style="background-color: rgb(222, 79, 79);  padding: 10px; border-radius: 10px;" *ngIf="errorMessage"
+            class="message error">{{errorMessage}}</div>
+    </div>
     <div class="container">
         <div class="sidemenu" id="sideMenu">
             <div id="sidemenu-close">
@@ -36,37 +42,33 @@
                         <span>Coming soon</span>
                     </div>
                 </div>
-                <div class="sub_menu">
-                    <p>Social</p>
-                    <div class="menu_item">
-                        <i class="fas fa-users"></i>
-                        <span>Link with Friends</span>
-                    </div>
-                    <div class="menu_item">
-                        <i class="fas fa-glass-cheers"></i>
-                        <span>Parties</span>
-                    </div>
-                </div>
+
                 <div class="sub_menu">
                     <p>General</p>
                     <div class="menu_item">
                         <i class="fas fa-cog"></i>
                         <span>Setting</span>
                     </div>
-                    <div class="menu_item">
+                    <div class="menu_item" routerLink='/landing'>
                         <i class="fas fa-sign-out-alt"></i>
-                        <span routerLink='/landing'>Logout</span>
+                        <span>Logout</span>
                     </div>
                 </div>
             </div>
         </div>
         <div class="content">
             <div class="header">
+
                 <i class="fas fa-bars" id="side-menu-open"></i>
-                <div class="input_container">
-                    <input type="text" placeholder="Search" />
-                    <i class="fas fa-search"></i>
-                </div>
+
+               <!-- Search ---------------------------------------------------------------------->
+                <div>
+                    <div class="input_container">
+                        <input type="text" placeholder="Search by tour type" [(ngModel)]="lookFor"
+                            (input)="filterToursByType()">
+                        <i class="fas fa-search"></i>
+                    </div>
+                </div>>
                 <div class="right_header">
                     <div>
                         <i class="fas fa-bell"> Howdy</i>
@@ -180,7 +182,11 @@
                     </div>
                 </div>
 
+                <div *ngIf="filteredTours.length === 0; else toursList">
+                    <p>No tours found.</p>
+                </div>
 
+                <ng-template #toursList>
                 <div class="upcoming_movies">
                     <br>
                     <p class="title">Tembea tours</p>
@@ -206,41 +212,45 @@
                                     <br>
                                     <div class="buttonsTour" style="display: flex; gap: 20px">
                                         <button (click)="showTourDetails(tour)">Read More</button>
-                                        <button (click)="showBookingForm = true">Book</button>
-                                        <div>
-                                            <i class="fas fa-comments"></i>
+                                        <button (click)="triggerBookingForm(tour)">Book</button>
+                                        <i class="fas fa-comments"></i>
+                                    </div>
+                                    <!-- Booking Form -->
+                                    <div class="booking-form" *ngIf="showBookingForm ">
+                                        <label for="numberOfPeople">Number of People:</label>
+                                        <input type="number" id="numberOfPeople" [(ngModel)]="numberOfPeople" min="1">
+                                        <div *ngIf="numberOfPeople > 0">
+                                            <p>Total Price: Ksh {{ calculateTotalPrice() }}</p>
                                         </div>
-                                        <!-- Booking Form -->
-                                        <div class="booking-form" *ngIf="showBookingForm && selectedTour === tour">
-                                            <label for="numberOfPeople">Number of People:</label>
-                                            <input type="number" id="numberOfPeople" [(ngModel)]="numberOfPeople">
-                                            <button (click)="bookTour()">Confirm Booking</button>
-                                        </div>
+                                        <button (click)="bookTour()">Confirm Booking</button>
+                                    </div>
 
-                                        <!-- Success Message -->
-                                        <div class="success-message" *ngIf="bookingSuccess && selectedTour === tour">
-                                            {{ successMessage }}
-                                        </div>
+
+                                    <!-- Success Message -->
+                                    <div class="success-message" *ngIf="bookingSuccess && selectedTour === tour">
+                                        {{ successMessage }}
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-
-                <app-tour-popup *ngIf="selectedTour" [tour]="selectedTour"
-                    (closePopup)="closeTourDetails()"></app-tour-popup>
-
-
-                <app-tour-popup *ngIf="selectedTour" [tour]="selectedTour"
-                    (closePopup)="closeTourDetails()"></app-tour-popup>
-
-
+            </ng-template>
             </div>
+
+            <app-tour-popup *ngIf="selectedTour" [tour]="selectedTour"
+                (closePopup)="closeTourDetails()"></app-tour-popup>
+
+
+            <app-tour-popup *ngIf="selectedTour" [tour]="selectedTour"
+                (closePopup)="closeTourDetails()"></app-tour-popup>
+
 
         </div>
 
     </div>
+
+
 
     <script>
 
