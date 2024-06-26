@@ -106,6 +106,47 @@ The frontend should now be accessible at http://localhost:4200.
 API Documentation
 The API documentation is available in the restClient directory of the backend. You can import the tour.http and booking.http files into your preferred API client (e.g., Insomnia, Postman) to explore and test the available endpoints.
 
+
+
+## Screenshots
+
+### Landing Page
+
+![Landing Page](/frontend-angular/public/assets/screenshots/Screenshot1.PNG)
+![Landing Page](/frontend-angular/public/assets/screenshots/landingPage.png)
+![Landing Page](/frontend-angular/public/assets/screenshots/loginValidation.PNG)
+![Landing Page](/frontend-angular/public/assets/screenshots/unsuccesfulLogin.PNG)
+![Landing Page](/frontend-angular/public/assets/screenshots/loginSuccess.PNG)
+![Landing Page](/frontend-angular/public/assets/screenshots/signupFormValidation.PNG)
+![Landing Page](/frontend-angular/public/assets/screenshots/unsuccesfulRegistration.PNG)
+![Landing Page](/frontend-angular/public/assets/screenshots/SuccesfulRegistration.PNG)
+![Landing Page](/frontend-angular/public/assets/screenshots/AdminDashboard.PNG)
+![Landing Page](/frontend-angular/public/assets/screenshots/userdashboard.png)
+![Landing Page](/frontend-angular/public/assets/screenshots/userbooking.png)
+![Landing Page](/frontend-angular/public/assets/screenshots/ViewOneTout.PNG)
+
+This is a screenshot of the landing page.
+
+### Sign Up
+
+![Sign Up](screenshots/signup.png)
+
+This is a screenshot of the sign up page.
+
+### Login
+
+![Login](screenshots/login.png)
+
+This is a screenshot of the login page.
+
+## Installation
+
+1. Clone the repository:
+
+```bash
+git clone https://github.com/your-username/your-project.git
+
+
   
 
 
