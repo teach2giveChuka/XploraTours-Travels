@@ -112,7 +112,7 @@ The API documentation is available in the restClient directory of the backend. Y
 
 ### Landing Page
 
-![Landing Page](/frontend-angular/public/assets/screenshots/Screenshot1.PNG)
+![Landing Page](./frontend-angular/public/assets/screenshots/Screenshot1.PNG)
 ![Landing Page](/frontend-angular/public/assets/screenshots/landingPage.png)
 ![Landing Page](/frontend-angular/public/assets/screenshots/loginValidation.PNG)
 ![Landing Page](/frontend-angular/public/assets/screenshots/unsuccesfulLogin.PNG)
