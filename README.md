@@ -59,7 +59,7 @@
 2. **Navigate to the project directory**
 
    ```bash
-  cd XploraTours-Travels
+   cd XploraTours-Travels
 
 3. **Install backend dependencies:**
 
