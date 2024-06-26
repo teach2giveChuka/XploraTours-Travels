@@ -1,5 +1,5 @@
+import { getIdFromToken } from "../helpers/getIdFromToken";
 import { bookingService } from "../services/booking.service";
-import { Booking } from "@prisma/client";
 import { Request, Response } from "express";
 
 let bservice = new bookingService()
@@ -9,6 +9,12 @@ export class bookingController {
     async createBooking(req: Request, res: Response) {
         try {
             let booking: Booking = req.body
+            const id = getIdFromToken(req);
+            if (!id) {
+                return res.status(401).json({
+                    error: "Access denied"
+                });
+            }
             let response = await bservice.createBooking(booking)
             return res.status(201).json(response)
         } catch (error) {

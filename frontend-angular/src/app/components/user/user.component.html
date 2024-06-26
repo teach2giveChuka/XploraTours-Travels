@@ -70,11 +70,9 @@
                     </div>
                 </div>>
                 <div class="right_header">
-                    <div>
-                        <i class="fas fa-bell"> Howdy</i>
-                    </div>
+                   <p>Howdy</p> &nbsp;
 
-                    {{ userDetails?.firstname }}
+                    {{ userDetails?.firstname }} &nbsp; {{ userDetails?.lastname }} 
 
                     <div class="user-profile">
                         <img [src]="userDetails?.profileImage || 'assets/imgs/lionface.jpg'" alt="Profile Image">
@@ -179,6 +177,13 @@
 
 
                         </div>
+                    </div>
+                </div>
+                <div>
+                    <div class="input_container">
+                        <input type="text" placeholder="Search by tour type" [(ngModel)]="lookFor"
+                            (input)="filterToursByType()">
+                        <i class="fas fa-search"></i>
                     </div>
                 </div>
 

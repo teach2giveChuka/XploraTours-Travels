@@ -18,13 +18,15 @@ export class UserService {
   }
 
   getUserIdFromToken(): string | null {
+
     const userData = localStorage.getItem('userData');
     if (userData) {
       const parsedData = JSON.parse(userData);
       const token = parsedData.token;
+      console.log("From service:", token);
       if (token) {
         const decodedToken: any = jwtDecode(token);
-        return decodedToken.userId || null;
+        return decodedToken.userId || null;        
       }
     }
     return null;

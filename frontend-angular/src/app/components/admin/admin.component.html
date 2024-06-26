@@ -96,7 +96,7 @@
                             <tr *ngFor="let tours of tours">
                                 <td>{{tours.tourType}}</td>
                                 <td>{{tours.destination}}</td>
-                                <td>${{tours.price}}</td>
+                                <td>Ksh. {{tours.price}}</td>
                                 <td>{{tours.startDate | date:'yyyy-MM-dd'}}</td>
                                 <td>{{tours.endDate | date:'yyyy-MM-dd'}}</td>
                                 <td>{{tours.isActive ? 'Open' : 'Closed'}}</td>

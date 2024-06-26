@@ -169,18 +169,50 @@ export class bookingService{
             const bookings = await this.prisma.booking.findMany({
                 where: {
                     userId: userId
+                },
+                include: {
+                    user: {
+                        select: {
+                            firstname: true,
+                            email: true,
+                            // Include any other user fields you need
+                        }
+                    },
+                    tour: {
+                        select: {
+                            destination: true,
+                            tourType: true,
+                            price: true,
+                            isActive: true,
+                            // Include any other tour fields you need
+                        }
+                    }
                 }
             });
-            return bookings;
+    
+            return bookings.map(booking => ({
+                ...booking,
+                userName: booking.user?.firstname,
+                userEmail: booking.user?.email,
+                destination: booking.tour?.destination,
+                tourType: booking.tour?.tourType,
+                pricing: booking.tour?.price,
+                tourStatus: booking.tour?.isActive ? "Active" : "Inactive",
+                // Remove the nested objects if not useful for frontend
+                user: undefined,
+                tour: undefined
+            }));
+    
         } catch (error) {
             console.error("Error viewing user bookings:", error);
             return {
                 message: "An unexpected error occurred :(",
-                
+                responseCode: 500,
                 error: error instanceof Error ? error.message : "Unknown error"
             };
         }
     }
+    
 
     async viewTourBookings(tourId: string) {
         try {
