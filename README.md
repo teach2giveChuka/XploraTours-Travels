@@ -88,7 +88,7 @@
 7. **Navigate back to the project root directory:**
 
    ```bash
-   cd ..'
+   cd ..
 
 8. **Install frontend dependencies:**
 
